@@ -789,15 +789,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 537654712565712397, guid: a75b10d16cfc346908502c8b1566ebda, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.84063
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 537654712565712397, guid: a75b10d16cfc346908502c8b1566ebda, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.37
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 537654712565712397, guid: a75b10d16cfc346908502c8b1566ebda, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.84063
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 537654712565712397, guid: a75b10d16cfc346908502c8b1566ebda, type: 3}
       propertyPath: m_LocalRotation.w
@@ -830,6 +830,14 @@ PrefabInstance:
     - target: {fileID: 858689383687147520, guid: a75b10d16cfc346908502c8b1566ebda, type: 3}
       propertyPath: m_Name
       value: ThirdPersonController
+      objectReference: {fileID: 0}
+    - target: {fileID: 5121652384593711302, guid: a75b10d16cfc346908502c8b1566ebda, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5121652384593711302, guid: a75b10d16cfc346908502c8b1566ebda, type: 3}
+      propertyPath: m_SkinWidth
+      value: 0.0001
       objectReference: {fileID: 0}
     - target: {fileID: 6315052880085175541, guid: a75b10d16cfc346908502c8b1566ebda, type: 3}
       propertyPath: drag
