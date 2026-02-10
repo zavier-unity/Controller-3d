@@ -7,22 +7,22 @@ namespace FinalCharacterController
         [field: SerializeField]
         public PlayerMovementState CurrentPlayerMovementState { get; private set; } = PlayerMovementState.Idling;
 
-        public void setPlayerMovementState(PlayerMovementState playerMovementState)
+        public void SetPlayerMovementState(PlayerMovementState playerMovementState)
         {
             CurrentPlayerMovementState = playerMovementState;
         }
 
-        public bool IsGroundedState()
+        public bool InGroundedState()
         {
             return IsStateGroundedState(CurrentPlayerMovementState);
         }
 
         public bool IsStateGroundedState(PlayerMovementState movementState)
         {
-            return CurrentPlayerMovementState == PlayerMovementState.Idling || 
-                   CurrentPlayerMovementState == PlayerMovementState.Walking ||
-                   CurrentPlayerMovementState == PlayerMovementState.Running || 
-                   CurrentPlayerMovementState == PlayerMovementState.Sprinting;   
+            return movementState == PlayerMovementState.Idling ||
+                   movementState == PlayerMovementState.Walking ||
+                   movementState == PlayerMovementState.Running ||
+                   movementState == PlayerMovementState.Sprinting;
         }
     }
     public enum PlayerMovementState

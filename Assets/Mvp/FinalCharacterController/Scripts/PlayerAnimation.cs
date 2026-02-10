@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace FinalCharacterController
@@ -6,7 +5,7 @@ namespace FinalCharacterController
     public class PlayerAnimation : MonoBehaviour
     {
         [SerializeField] private Animator _animator;
-        [SerializeField] private float locomotionBlendSpeed = 0.02f;
+        [SerializeField] private float locomotionBlendSpeed = 4f;
         
         private PlayerLocomotionInput _playerLocomotionInput;
         private PlayerState _playerState;
@@ -43,21 +42,22 @@ namespace FinalCharacterController
             bool isSprinting = _playerState.CurrentPlayerMovementState == PlayerMovementState.Sprinting;
             bool isJumping = _playerState.CurrentPlayerMovementState == PlayerMovementState.Jumping;
             bool isFalling = _playerState.CurrentPlayerMovementState == PlayerMovementState.Falling;
-            bool isGrounded = _playerState.IsGroundedState();
-            
-            Vector2 inputTarget = isSprinting ? _playerLocomotionInput.MovementInput * 1.5f : isRunning ? _playerLocomotionInput.MovementInput * 1f : _playerLocomotionInput.MovementInput * 0.5f;
-            _currentBlendInput = Vector3.Lerp(_currentBlendInput, inputTarget, locomotionBlendSpeed * Time.deltaTime);
-            
-            _animator.SetBool(isGroundedHash, isGrounded);
-            _animator.SetBool(isJumpingHash, isJumping);
-            _animator.SetBool(isFallingHash, isFalling);
-            _animator.SetFloat(inputMagnitudeHash , _currentBlendInput.magnitude);
-            _animator.SetBool(isRotatingToTargetHash, _playerController.IsRotatingToTarget);
-            _animator.SetBool(isIdlingHash, isIdling);
+            bool isGrounded = _playerState.InGroundedState();
 
-            _animator.SetFloat(inputXHash, _playerLocomotionInput.MovementInput.x);
+            Vector2 inputTarget = isSprinting ? _playerLocomotionInput.MovementInput * 1.5f :
+                isRunning ? _playerLocomotionInput.MovementInput * 1f : _playerLocomotionInput.MovementInput * 0.5f;
+            _currentBlendInput = Vector3.Lerp(_currentBlendInput, inputTarget, locomotionBlendSpeed * Time.deltaTime);
+
+            _animator.SetBool(isGroundedHash, isGrounded);
+            _animator.SetBool(isIdlingHash, isIdling);
+            _animator.SetBool(isFallingHash, isFalling);
+            _animator.SetBool(isJumpingHash, isJumping);
+            _animator.SetBool(isRotatingToTargetHash, _playerController.IsRotatingToTarget);
+
+            _animator.SetFloat(inputXHash, _currentBlendInput.x);
             _animator.SetFloat(inputYHash, _currentBlendInput.y);
-            _animator.SetFloat(rotationMisMatchHash, _playerController.RotationMisMatch);
+            _animator.SetFloat(inputMagnitudeHash, _currentBlendInput.magnitude);
+            _animator.SetFloat(rotationMisMatchHash, _playerController.RotationMismatch);
         }
     }
 }

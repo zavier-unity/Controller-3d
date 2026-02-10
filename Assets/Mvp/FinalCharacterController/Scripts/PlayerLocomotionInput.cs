@@ -13,8 +13,8 @@ namespace FinalCharacterController
         public Vector2 MovementInput { get; private set; }
         public Vector2 LookInput { get; private set; }
         public bool JumpPressed { get; private set; }
-        public bool SprintToggleOn { get; private set; }
-        public bool WalkToggleOn { get; private set; }  
+        public bool SprintToggledOn { get; private set; }
+        public bool WalkToggledOn { get; private set; }  
 
         #endregion
 
@@ -45,7 +45,6 @@ namespace FinalCharacterController
         public void OnMovement(InputAction.CallbackContext context)
         {
             MovementInput = context.ReadValue<Vector2>();
-            print(MovementInput);
         }
 
         public void OnLook(InputAction.CallbackContext context)
@@ -57,11 +56,11 @@ namespace FinalCharacterController
         {
             if (context.performed)
             {
-                SprintToggleOn = holdToSprint || !SprintToggleOn;
+                SprintToggledOn = holdToSprint || !SprintToggledOn;
             }
             else if (context.canceled)
             {
-                SprintToggleOn = !holdToSprint && SprintToggleOn;
+                SprintToggledOn = !holdToSprint && SprintToggledOn;
             }
         }
 
@@ -82,7 +81,7 @@ namespace FinalCharacterController
                 return;
             }
 
-            WalkToggleOn = !WalkToggleOn;
+            WalkToggledOn = !WalkToggledOn;
         }
 
         #endregion
