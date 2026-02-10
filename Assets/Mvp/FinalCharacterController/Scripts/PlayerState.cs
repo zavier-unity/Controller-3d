@@ -14,10 +14,15 @@ namespace FinalCharacterController
 
         public bool IsGroundedState()
         {
+            return IsStateGroundedState(CurrentPlayerMovementState);
+        }
+
+        public bool IsStateGroundedState(PlayerMovementState movementState)
+        {
             return CurrentPlayerMovementState == PlayerMovementState.Idling || 
                    CurrentPlayerMovementState == PlayerMovementState.Walking ||
                    CurrentPlayerMovementState == PlayerMovementState.Running || 
-                   CurrentPlayerMovementState == PlayerMovementState.Sprinting;
+                   CurrentPlayerMovementState == PlayerMovementState.Sprinting;   
         }
     }
     public enum PlayerMovementState
