@@ -44,7 +44,7 @@ namespace FinalCharacterController
             _playerState = GetComponent<PlayerState>();
             _playerController = GetComponent<PlayerController>();
             _playerActionsInput = GetComponent<PlayerActionsInput>();
-            actionHashes = new int[] { isGatheringHash };
+            actionHashes = new int[] { isGatheringHash};
         }
 
         private void Update()

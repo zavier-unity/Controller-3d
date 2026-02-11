@@ -22,6 +22,7 @@ namespace FinalCharacterController
         public float sprintSpeed = 7f;
         public float inAirAcceleration = 25f;
         public float drag = 20f;
+        public float inAirDrag = 10f;
         public float gravity = 25f;
         public float terminalVelocity = 50f;
         public float jumpSpeed = 1.0f;
@@ -117,8 +118,10 @@ namespace FinalCharacterController
             Vector3 movementDelta = movementDirection * lateralAcceleration * Time.deltaTime;
             Vector3 newVelocity = _characterController.velocity + movementDelta;
 
-            Vector3 currentDrag = newVelocity.normalized * drag * Time.deltaTime;
-            newVelocity = newVelocity.magnitude > drag * Time.deltaTime ? newVelocity - currentDrag : Vector3.zero;
+            //Add drag to player
+            float dragMagnitude = isGrounded ? drag : inAirDrag;
+            Vector3 currentDrag = newVelocity.normalized * dragMagnitude * Time.deltaTime;
+            newVelocity = newVelocity.magnitude > dragMagnitude * Time.deltaTime ? newVelocity - currentDrag : Vector3.zero;
             newVelocity = Vector3.ClampMagnitude(new Vector3(newVelocity.x, 0f, newVelocity.z), clampLateralMagnitude);
             newVelocity.y += _verticalVelocity;
             newVelocity = !isGrounded ? HandleSteepWalls(newVelocity) : newVelocity;
