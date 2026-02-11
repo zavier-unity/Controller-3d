@@ -511,6 +511,7 @@ GameObject:
   - component: {fileID: 3431728905375668837}
   - component: {fileID: 3639894874989570251}
   - component: {fileID: 4850733046818780796}
+  - component: {fileID: 6565223193166090026}
   m_Layer: 6
   m_Name: ThirdPersonController
   m_TagString: Untagged
@@ -670,6 +671,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70441abe960d146ce8ce719c330c5f02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ThirdPersonController
+  _virtualCamera: {fileID: 912679354166167861}
+  _cameraZoomSpeed: 0.2
+  _cameraMinZoom: 1
+  _cameraMaxZoom: 5
+--- !u!114 &6565223193166090026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858689383687147520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f015eb0809fcd4e81a0e9f8fcaffcc68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FinalCharacterController.PlayerActionsInput
 --- !u!1 &922040700072203124
 GameObject:
   m_ObjectHideFlags: 0
@@ -3096,7 +3113,7 @@ MonoBehaviour:
   CameraSide: 1
   CameraDistance: 2
   AvoidObstacles:
-    Enabled: 0
+    Enabled: 1
     CollisionFilter:
       serializedVersion: 2
       m_Bits: 1
@@ -3901,7 +3918,7 @@ Transform:
   m_GameObject: {fileID: 5066816415625138312}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.755, z: 0}
+  m_LocalPosition: {x: 0, y: 1.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
